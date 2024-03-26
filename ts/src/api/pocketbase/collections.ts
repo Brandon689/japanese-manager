@@ -1,5 +1,5 @@
-import { pb } from 'api/pocketbase';
-import { CryptocurrenciesRecord, CryptocurrenciesResponse, RecordIdString, UsersResponse } from 'typings/pocketbase-types';
+import { pb } from 'api/pocketbase/pocketbase.ts';
+import { CryptocurrenciesRecord, CryptocurrenciesResponse, RecordIdString, UsersResponse } from 'typings/pocketbase-types.ts';
 
 export const getUser = async (email: string, password: string): Promise<UsersResponse> => {
     try {
@@ -25,7 +25,7 @@ export const login = async (email: string, password: string): Promise<boolean> =
 };
 
 
-export const getSlime = async (): Promise<TreeNode[]> => {
+export const getFSTree = async (): Promise<TreeNode[]> => {
     try {
         return await pb.send("/filesystem", {});
     } catch (error) {
