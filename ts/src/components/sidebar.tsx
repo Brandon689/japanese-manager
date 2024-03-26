@@ -188,16 +188,20 @@ function SidePanel(props: SidePanelProps) {
                             </li>
                         </ul>
 
-
                         <ul className="list-none p-0 m-0 overflow-hidden">
                             <li>
-                                <Link to="login" className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">Login</Link>
+                                <Link to="login"
+                                      className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">Login</Link>
                             </li>
                             <li>
-                                <Link to="dash" className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">Dashboard</Link>
+                                <Link to="dash"
+                                      className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">Dashboard</Link>
+                            </li>
+                            <li>
+                                <Link to="grid"
+                                      className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">Grid</Link>
                             </li>
                         </ul>
-
 
                     </div>
                     <div className="mt-auto">
