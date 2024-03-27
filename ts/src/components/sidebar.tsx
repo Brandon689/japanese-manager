@@ -5,15 +5,8 @@ import { Ripple } from 'primereact/Ripple';
 import { StyleClass } from 'primereact/StyleClass';
 import {Link} from "react-router-dom";
 
-interface SidePanelProps {
-    onContentChange: (content: string) => void;
-}
+function SidePanel() {
 
-function SidePanel(props: SidePanelProps) {
-    const handleClick = (content: string) => {
-        console.log(content);
-        props.onContentChange(content);
-    };
     const btnRef1 = useRef(null);
     const btnRef2 = useRef(null);
     const btnRef3 = useRef(null);
@@ -42,21 +35,21 @@ function SidePanel(props: SidePanelProps) {
                                     </div>
                                 </StyleClass>
                                 <ul className="list-none p-0 m-0 overflow-hidden">
-                                    <li onClick={() => handleClick('content1')}>
+                                    <li>
                                         <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                             <i className="pi pi-home mr-2"></i>
                                             <span className="font-medium">Dashboard</span>
                                             <Ripple/>
                                         </a>
                                     </li>
-                                    <li onClick={() => handleClick('content2')}>
+                                    <li>
                                         <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                             <i className="pi pi-bookmark mr-2"></i>
                                             <span className="font-medium">Products</span>
                                             <Ripple/>
                                         </a>
                                     </li>
-                                    <li onClick={() => handleClick('content3')}>
+                                    <li>
                                         <a className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
                                             <i className="pi pi-bookmark mr-2"></i>
                                             <span className="font-medium">Files</span>

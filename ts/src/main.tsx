@@ -19,7 +19,6 @@ import { loader as contactsLoader } from './routes/contact'
 import Login from "routes/login-signup.tsx";
 import DashboardPage from "routes/file-tree.tsx";
 import GridPage from "routes/grid.tsx";
-//import AnimeDetail from "routes/anime-detail.tsx";
 import AnimeDetailPage from "routes/anime-detail"
 
 const router = createBrowserRouter([

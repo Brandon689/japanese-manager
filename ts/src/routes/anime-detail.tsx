@@ -7,12 +7,13 @@ const AnimeDetailPage: React.FC = () => {
     const anime = location.state as Media;
 
     return (
-        <div className="p-grid p-justify-center">
-            <div className="p-col-10">
-                <h1>Anime Detail</h1>
-                {anime ? <AnimeDetail anime={anime} /> : <div>Anime not found</div>}
-            </div>
-        </div>
+
+        <div className="xfckljsd">{anime ? <AnimeDetail anime={anime} /> : <div>Anime not found</div>}</div>
+        // <div className="p-grid p-justify-center">
+        //     <div className="p-col-10">
+        //
+        //     </div>
+        // </div>
     );
 };
 
