@@ -57,7 +57,7 @@ export default function AdvancedDataViewComponent() {
                                 <span className="flex flex-column">
                                     <span className="">{anime.episodes} Episodes</span>
                                     <div
-                                        className="">{anime.season.charAt(0) + anime.season.slice(1).toLowerCase()} {anime.startDate?.year}</div>
+                                        className="">{anime.season?.charAt(0) + anime.season?.slice(1).toLowerCase()} {anime.startDate?.year}</div>
                                 </span>
                                 </div>
                             </div>
