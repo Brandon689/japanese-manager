@@ -19,6 +19,7 @@ import { loader as contactsLoader } from './routes/contact'
 import Login from "routes/login-signup.tsx";
 import DashboardPage from "routes/file-tree.tsx";
 import GridPage from "routes/grid.tsx";
+import AnimeDetail from "routes/anime-detail.tsx";
 
 const router = createBrowserRouter([
     {
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
             {
                 path: 'grid',
                 element: <GridPage />
+            },
+            {
+                path: 'grid/:anime',
+                element: <AnimeDetail />,
+                loader: contactsLoader
             },
         ],
     },

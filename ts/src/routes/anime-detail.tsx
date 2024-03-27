@@ -11,15 +11,13 @@ export function loader() {
     return contact;
 }
 
-export default function Contact() {
-    const contact = useLoaderData() as Cat;
+export default function AnimeDetail() {
+    //const contact = useLoaderData() as Cat;
     const c = useLocation();
-    console.log("so")
-    console.log(c)
-    console.log("what")
+    const anime = c.state as Media;
     return (
         <div id="contact">
-            {contact.name} c
+            {anime.id}
         </div>
     );
 }
