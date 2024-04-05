@@ -20,6 +20,8 @@ import Login from "routes/login-signup.tsx";
 import DashboardPage from "routes/file-tree.tsx";
 import GridPage from "routes/grid.tsx";
 import AnimeDetailPage from "routes/anime-detail"
+import Wanakana from "./routes/wanakana";
+import FileUploader from "./components/file-upload";
 
 const router = createBrowserRouter([
     {
@@ -49,6 +51,11 @@ const router = createBrowserRouter([
             {
                 path: 'grid/:anime',
                 element: <AnimeDetailPage />,
+                loader: contactsLoader
+            },
+            {
+                path: 'wanakana',
+                element: <Wanakana />,
                 loader: contactsLoader
             },
         ],

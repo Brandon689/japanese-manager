@@ -1,6 +1,12 @@
 package logic
 
 import (
+	"encoding/json"
+	"fmt"
+	"github.com/labstack/echo/v5"
+	"github.com/nssteinbrenner/anitogo"
+	"io"
+	"net/http"
 	"os"
 	"path/filepath"
 	"pocketbase-react-starter/types"
@@ -18,6 +24,88 @@ func newFsNode(key int, name string, path string, isDir bool) types.TreeNode {
 		Key:   strconv.Itoa(key),
 	}
 	return x
+}
+
+func removeLeadingZero(s string) string {
+	return strings.TrimLeft(s, "0")
+}
+
+func Titles(titles []string) []*anitogo.Elements {
+	var t []*anitogo.Elements
+	for _, title := range titles {
+		el := Title(title)
+		el.EpisodeNumber[0] = removeLeadingZero(el.EpisodeNumber[0])
+		t = append(t, el)
+	}
+	return t
+}
+
+func Title(title string) *anitogo.Elements {
+	parsed := anitogo.Parse(title, anitogo.DefaultOptions)
+	jsonParsed, err := json.MarshalIndent(parsed, "", "    ")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(string(jsonParsed) + "\n")
+
+	// Accessing the elements directly
+	fmt.Println("Anime Title:", parsed.AnimeTitle)
+	fmt.Println("Anime Year:", parsed.AnimeYear)
+	fmt.Println("Episode Number:", parsed.EpisodeNumber)
+	fmt.Println("Release Group:", parsed.ReleaseGroup)
+	fmt.Println("File Checksum:", parsed.FileChecksum)
+	return parsed
+}
+
+func UploadFile(c echo.Context, animeName string) error {
+	// Get the files from the request
+	form, err := c.MultipartForm()
+	if err != nil {
+		return err
+	}
+	defer form.RemoveAll()
+
+	// Retrieve slice of files
+	files := form.File["demo[]"]
+
+	var b []types.SubtitleUpload
+	// Iterate through the files
+	for _, file := range files {
+
+		parsedFile := Title(file.Filename)
+		fmt.Println(parsedFile.EpisodeNumber)
+		b = append(b, types.SubtitleUpload{
+			FileName: file.Filename,
+			Name:     parsedFile.AnimeTitle,
+			Episode:  parsedFile.EpisodeNumber[0],
+		})
+		// Open the uploaded file
+		src, err := file.Open()
+		if err != nil {
+			return err
+		}
+		defer src.Close()
+
+		dirPath := "uploads/" + animeName
+		err = os.Mkdir(dirPath, 0777)
+		if err != nil {
+			fmt.Println("Error creating directory:", err)
+		}
+
+		dstPath := filepath.Join(dirPath, file.Filename)
+		dst, err := os.Create(dstPath)
+		if err != nil {
+			return err
+		}
+		defer dst.Close()
+
+		// Copy the file to the destination path
+		if _, err = io.Copy(dst, src); err != nil {
+			return err
+		}
+	}
+
+	return c.JSON(http.StatusOK, b)
 }
 
 func ListFilesAll(directory string) [1]types.TreeNode {

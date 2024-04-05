@@ -1,7 +1,7 @@
 export const ProductService = {
     async getProductsData(search: string): Promise<Page> {
         try {
-            const response = await fetch('http://localhost:8080/anime?search=' + search);
+            const response = await fetch('http://127.0.0.1:8090/anime?search=' + search);
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }

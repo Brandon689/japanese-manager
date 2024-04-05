@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\api",
+    "\\src\\api\\anilist",
+    "\\src\\api\\fs",
+    "\\src\\components",
+    "\\src\\routes",
+    "\\src\\typings"
+  ],
+  "SelectedNode": "\\src\\routes\\root.tsx",
+  "PreviewInSolutionExplorer": false
+}

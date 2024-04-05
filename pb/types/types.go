@@ -17,3 +17,20 @@ type TreeNode struct {
 type DirPath struct {
 	Dir string `json:"dir"`
 }
+
+type SubtitleUpload struct {
+	FileName string `json:"fileName"`
+	Episode  string `json:"episode"`
+	Name     string `json:"name"`
+}
+
+type Subtitles struct {
+	Name string `json:"name"`
+}
+
+//type AnitogoSubs []struct {
+//	AnimeTitle    string   `json:"anime_title"`
+//	EpisodeNumber []string `json:"episode_number"`
+//	FileExtension string   `json:"file_extension"`
+//	FileName      string   `json:"file_name"`
+//}

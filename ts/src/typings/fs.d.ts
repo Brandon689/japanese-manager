@@ -9,3 +9,15 @@ declare interface TreeNode {
     icon: string;
     children: TreeNode[];
 }
+
+declare interface Subtitles {
+    name: string;
+}
+
+declare interface AnitogoSubs {
+    anime_title: string
+    episode_number: string[]
+    file_extension: string
+    file_name: string
+    episode: int
+}
